@@ -56,10 +56,10 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.teams : (
-        v.description == null || (length(v.description) >= 0 && length(v.description) <= 256)
+        v.description == null || (length(v.description) <= 256)
       )
     ])
-    error_message = "must be between 0 and 256 characters"
+    error_message = "must be at most 256 characters"
   }
   validation {
     condition = alltrue([
